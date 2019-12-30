@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1073019749309",
+    "firebase_url": "https://fir-vidplayer.firebaseio.com",
+    "project_id": "fir-vidplayer",
+    "storage_bucket": "fir-vidplayer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073019749309:android:fa96aa8e6152b4e97208d4",
+        "android_client_info": {
+          "package_name": "com.omega.firebasevidplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073019749309-inf101sqqcjq49e70e7gt5drunp0ks77.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.omega.firebasevidplayer",
+            "certificate_hash": "429060bf880614c50500380b67bfc7e0ceedbb95"
+          }
+        },
+        {
+          "client_id": "1073019749309-togppks3s01im44clad0i4gm792v09og.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQl2GGAv80RSF1Svy3q_2BtW5imi-il8g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073019749309-togppks3s01im44clad0i4gm792v09og.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
