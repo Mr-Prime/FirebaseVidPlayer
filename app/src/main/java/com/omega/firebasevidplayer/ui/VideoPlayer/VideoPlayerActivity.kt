@@ -22,7 +22,6 @@ import com.omega.firebasevidplayer.model.response.FirebaseResponse
 import com.omega.firebasevidplayer.model.response.HomeResponse
 import com.omega.firebasevidplayer.ui.VideoPlayer.presenter.VideoPresenter
 import com.omega.firebasevidplayer.ui.VideosHome.HomeFragment
-import com.omega.firebasevidplayer.ui.VideosHome.presenter.homePresenter
 import kotlinx.android.synthetic.main.activity_video_player.*
 
 
@@ -38,7 +37,7 @@ class VideoPlayerActivity : AppCompatActivity(),LoadInterface, VideoView.View {
     private val TAG: String = VideoPlayerActivity::class.java.getName()
     private var playbackPosition: Long = 0
     private var playbackStateListener: PlaybackStateListener? = null
-    var dataList: List<HomeResponse> = arrayListOf()
+    var dataList: MutableList<HomeResponse> = arrayListOf()
     var mediaArray = arrayOfNulls<MediaSource>(0)
     var id :Int = 0
     var count :Int = 1
@@ -165,7 +164,7 @@ class VideoPlayerActivity : AppCompatActivity(),LoadInterface, VideoView.View {
 
     private fun showHomeFragment() {
 
-        var fragment: HomeFragment = HomeFragment.newInstance(this)
+        var fragment: HomeFragment = HomeFragment.newInstance(this,pos)
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
             .replace(
@@ -176,9 +175,13 @@ class VideoPlayerActivity : AppCompatActivity(),LoadInterface, VideoView.View {
         fragmentTransaction.commit()
     }
 
-    override fun OnLoad(videos: List<HomeResponse>) {
+    override fun OnLoad(
+        videos: MutableList<HomeResponse>,
+        posi: Int
+    ) {
         Log.e("OnLoad","size "+ videos.size)
         dataList=videos
+        dataList.removeAt(posi)
         releasePlayer()
 
 
@@ -191,15 +194,11 @@ class VideoPlayerActivity : AppCompatActivity(),LoadInterface, VideoView.View {
             Log.e("ForLoop ", "Added 0 " + Title)
         }
 
-        for (i in 0 until list.size) {
-            if(i == pos) {
+        for (i in 0 until list.size-1) {
 
-            }else{
                 mediaSources[count] = buildMediaSource(Uri.parse(list.get(i).url),list.get(i).id)
                 Log.e("ForLoop ", "Added " + i + list.get(i).title)
                 count++
-            }
-
         }
         mediaArray=mediaSources
 

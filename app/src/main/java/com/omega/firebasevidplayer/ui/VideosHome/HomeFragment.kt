@@ -22,10 +22,15 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 class HomeFragment : Fragment(),HomeView.View {
     companion object {
         val FRAGMENT_NAME: String = HomeFragment::class.java.name
-        var dataList: List<HomeResponse> = arrayListOf()
+        var dataList: MutableList<HomeResponse> = arrayListOf()
         lateinit var interfcaeLoad:LoadInterface
+        private var posi:Int=0
 
-        fun newInstance(load : LoadInterface):HomeFragment{
+        fun newInstance(
+            load: LoadInterface,
+            pos: Int
+        ):HomeFragment{
+            posi=pos
             val args: Bundle = Bundle()
             interfcaeLoad=load
             val fragment = HomeFragment()
@@ -78,13 +83,16 @@ class HomeFragment : Fragment(),HomeView.View {
         })
     }
 
-    override fun onVideosLoadedSuccess(videos: List<HomeResponse>) {
+    override fun onVideosLoadedSuccess(videos: MutableList<HomeResponse>) {
+
+
         dataList = videos
+
         adapter.itemList = dataList
         Log.e("frag","size "+ adapter.itemList.size)
         adapter.notifyDataSetChanged()
 
-        interfcaeLoad.OnLoad(dataList)
+        interfcaeLoad.OnLoad(dataList,posi)
 
 
     }

@@ -6,7 +6,7 @@ import com.omega.firebasevidplayer.utility.BasePresenter
 
 class HomeView {
     interface View : BasePresenter {
-        fun onVideosLoadedSuccess(videos: List<HomeResponse>)
+        fun onVideosLoadedSuccess(videos: MutableList<HomeResponse>)
         fun onnVideosLoadedError()
     }
 }

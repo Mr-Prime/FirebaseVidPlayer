@@ -16,7 +16,7 @@ class homePresenter(private val view: HomeView.View) :
         interactor!!.videos
     }
 
-    override fun onNetworkSuccess(videos: List<HomeResponse>) {
+    override fun onNetworkSuccess(videos: MutableList<HomeResponse>) {
         view.onVideosLoadedSuccess(videos)
     }
 
